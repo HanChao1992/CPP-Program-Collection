@@ -31,46 +31,139 @@ void textdis(string ward) {
   for (string::iterator it = ward.begin(), end = ward.end(); it != end; ++it) {
     if(*it == '[') {
       fflush(stdout);
-      usleep(400000);
+      usleep(300000);
     }
     else {
       cout << *it;
       fflush(stdout);
-      usleep(60000);
+      usleep(40000);
     }
   }
   cout << endl;
-  usleep(60000);
+  usleep(20000);
 }
 
 void nextline(int n) {
   for (int i = 0; i < n; i++) {
    cout << endl;
-   usleep(1000000);
+   usleep(500000);
   }
 }
 
 int main () {
   int os = 1000000;
-  textdis("Press s to start the game");
-  char s;
-  int scount = 0;
-  while (cin >> s) {
-	  if (scount <= 6) {
-      if (s == 's') {
+  bool nameState = true;
+  string pfirstname;
+  string plastname;
+  textdis("My child. May I have your name?");
+  nextline(2);
+  while (nameState == true) {
+    textdis("Please enter your firstname...");
+
+    getline(cin, pfirstname);
+    textdis("Please enter your lastname...");
+
+    getline(cin, plastname);
+    textdis(pfirstname + " " + plastname + ". " + "Is it correct?");
+    textdis("Press y to confirm");
+    textdis("Press n to re-enter your name.");
+    char confirm;
+    while (cin >> confirm) {
+      if (confirm == 'y') {
+        //textdis("empty");
+        nameState = false;
         break;
       }
-      else {
-        textdis("Please press s");
-        scount++;
-      }
+      else {}
     }
-    else {
-      textdis("OMG go fuck yourself!");
-      shutdown();
-      return 0;
-   }
   }
+  textdis("Your name is " + pfirstname + " " + plastname + ", and this is the world you know.");
+  nextline(3);
+
+  textdis("City Hospital, First Floor, Hallway.");
+  nextline(1);
+  textdis("Doctor Lee: Jesus Christ. What happened to him?");
+  nextline(1);
+  textdis("???: I don't know. I found him lying on the street like this…");
+  nextline(1);
+  textdis("Doctor Lee: Alice. Go tell Doctor Rogan to come to the emergency room right now.");
+  nextline(1);
+  textdis("Alice: Yes Doctor.");
+  nextline(1);
+  textdis("Doctor Lee: Thank you sir for bringing him in. You may have just saved a life.");
+  nextline(1);
+  textdis("???: I hope he’s gonna be ok.");
+  nextline(1);
+  textdis("Doctor Lee: God bless him.");
+  nextline(5);
+  textdis("HanS Studio");
+  nextline(2);
+  textdis("Cloudero Entertainment");
+  nextline(1);
+  cout << "   _____ _      ____  _    _ _____  ______ _____   ____  " << endl;
+  usleep(os);
+  cout << "  / ____| |    / __ \\| |  | |  __ \\|  ____|  __ \\ / __ \\ " << endl;
+  usleep(os);
+  cout << " | |    | |   | |  | | |  | | |  | | |__  | |__) | |  | |" << endl;
+  usleep(os);
+  cout << " | |    | |   | |  | | |  | | |  | |  __| |  _  /| |  | |" << endl;
+  usleep(os);
+  cout << " | |____| |___| |__| | |__| | |__| | |____| | \\ \\| |__| |" << endl;
+  usleep(os);
+  cout << "  \\_____|______\\____/ \\____/|_____/|______|_|  \\_\\\\____/ " << endl;
+  nextline(2);
+
+  textdis("proudly presents");
+
+  nextline(2);
+
+  textdis("The World I Know");
+  nextline(1);
+  textdis("Loading...");
+  nextline(5);
+
+  textdis("Chapter 1: Two Faces");
+  nextline(1);
+  textdis("RaidTech INC. Building C, Third Floor, CEO " + pfirstname + " " + plastname + "'s Office.");
+  nextline(1);
+  textdis("Lisa: The report is ready, Mr." + plastname + ".");
+  nextline(1);
+  textdis("You carefully examed the report and found out a couple of siginificant mistakes.");
+  nextline(1);
+  textdis("What would you say?");
+  textdis("1) What the fuck is this? Did you even check your shit before you show it to me?");
+  textdis("2) Lisa, there are couple of mistakes in this report.");
+  textdis("3) Good work Lisa.");
+  char choice;
+  while (cin >> choice) {
+    switch (choice) {
+      case '1' :
+      textdis(pfirstname + ": What the fuck is this? Did you even check your shit before you show it to me?");
+      nextline(1);
+      textdis("Lisa: Oh I am so sorry Mr." + plastname + "! I will redo it immediatley!");
+      nextline(1);
+      textdis("Lisa grabbed the report from you and rushed out of the office.");
+      break;
+      case '2' :
+      textdis(pfirstname + ": Lisa, there are couple of mistakes in this report.");
+      nextline(1);
+      textdis("Lisa: Really? Let me see.");
+      nextline(1);
+      textdis("Lisa is standing beside you, gradualy moving closer to you. You can smell her perfume.");
+      nextline(1);
+      textdis("Lisa: Please Mr." + plastname + ". Show me how it should be done...");
+      break;
+      case  '3' :
+      textdis(pfirstname + ": Good work Lisa.");
+      nextline(1);
+      textdis("Lisa: Thank you Mr." + plastname + ". Are you sure there is no mistake in it? You know I am kinda dumb...");
+      break;
+      default:
+      textdis("Please re-enter a number.");
+    }
+  }
+}
+
   textdis("Game Starting...");
   nextline(1);
   textdis("Creating save file...");
